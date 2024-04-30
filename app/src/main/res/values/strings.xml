@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Reader</string>
+    <string name="register">Register</string>
+    <string name="reader">Reader.</string>
+    <string name="sign_in">Sign In</string>
+    <string name="login_page">LOGIN PAGE</string>
+    <string name="registration_page">REGISTRATION PAGE</string>
+</resources>
