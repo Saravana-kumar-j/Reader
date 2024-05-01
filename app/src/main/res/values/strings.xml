@@ -5,4 +5,12 @@
     <string name="sign_in">Sign In</string>
     <string name="login_page">LOGIN PAGE</string>
     <string name="registration_page">REGISTRATION PAGE</string>
+    <string name="e_mail">E-mail</string>
+    <string name="name">User Name</string>
+    <string name="password">Password</string>
+    <string name="login">Login</string>
+    <string name="submit">Submit</string>
+    <string name="login_now">Already have an Account. Login Now</string>
+    <string name="register_now">Don\'t have an Account. Register Now</string>
+    <string name="logout">Logout</string>
 </resources>
