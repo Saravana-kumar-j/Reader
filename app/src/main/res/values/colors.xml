@@ -4,4 +4,5 @@
     <color name="white">#FFFFFFFF</color>
     <color name="splash_color">#F1EFE7</color>
     <color name="splash_color_light">#fffefa</color>
+    <color name="button_color">#E5BA73</color>
 </resources>

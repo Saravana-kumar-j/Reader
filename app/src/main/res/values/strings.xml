@@ -13,4 +13,12 @@
     <string name="login_now">Already have an Account. Login Now</string>
     <string name="register_now">Don\'t have an Account. Register Now</string>
     <string name="logout">Logout</string>
+    <string name="home">Home</string>
+    <string name="notification">Notification</string>
+    <string name="profile">Profile</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="home_fragment">HOME Fragment</string>
+    <string name="fragment_notification">Fragment Notification</string>
+    <string name="fragment_profile">Fragment Profile</string>
 </resources>
