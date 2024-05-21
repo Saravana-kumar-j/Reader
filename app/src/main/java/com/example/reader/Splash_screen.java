@@ -18,6 +18,7 @@ public class Splash_screen extends AppCompatActivity {
         }
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
+
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
@@ -26,5 +27,7 @@ public class Splash_screen extends AppCompatActivity {
                 finish();
             }
         }, 2700); // Change this to the desired duration of the splash screen in milliseconds
+
+
     }
 }

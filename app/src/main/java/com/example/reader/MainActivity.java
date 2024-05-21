@@ -34,6 +34,19 @@ public class MainActivity extends AppCompatActivity {
     FirebaseUser user;
     ArrayList<Fragment> fragmentArrayList = new ArrayList<>();
     BottomNavigationView bottomNav;
+
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        auth = FirebaseAuth.getInstance();
+        user = auth.getCurrentUser();
+        if(user == null){
+            startActivity(new Intent(this, Welcome_activity.class));
+        }
+    }
+
+
     @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -91,23 +104,23 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        if(user == null){
-            Intent intent = new Intent(getApplicationContext(), Login_activity.class);
-            startActivity(intent);
-            finish();
-        } else {
-            textView.setText(user.getEmail());
-        }
-
-        button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                FirebaseAuth.getInstance().signOut();
-                Intent intent = new Intent(getApplicationContext(), Login_activity.class);
-                startActivity(intent);
-                finish();
-            }
-        });
+//        if(user == null){
+//            Intent intent = new Intent(getApplicationContext(), Welcome_activity.class);
+//            startActivity(intent);
+//            finish();
+//        } else {
+//            textView.setText(user.getEmail());
+//        }
+//
+//        button.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                FirebaseAuth.getInstance().signOut();
+//                Intent intent = new Intent(getApplicationContext(), Login_activity.class);
+//                startActivity(intent);
+//                finish();
+//            }
+//        });
 
     }
 }

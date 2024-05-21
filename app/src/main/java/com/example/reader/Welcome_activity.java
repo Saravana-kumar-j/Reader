@@ -11,9 +11,24 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+
 public class Welcome_activity extends AppCompatActivity {
     private Button register;
     private Button login;
+    FirebaseAuth auth;
+    FirebaseUser user;
+    @Override
+    protected void onStart() {
+        super.onStart();
+        auth = FirebaseAuth.getInstance();
+        user = auth.getCurrentUser();
+        if(user != null){
+            startActivity(new Intent(this, MainActivity.class));
+        }
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

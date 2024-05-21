@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -29,6 +30,7 @@ public class register_activity extends AppCompatActivity {
     Button buttonReg;
     FirebaseAuth mAuth;
     TextView textView;
+    ProgressBar progressBar;
     @SuppressLint("MissingInflatedId")
 
     @Override
@@ -54,6 +56,7 @@ public class register_activity extends AppCompatActivity {
         buttonReg = findViewById(R.id.btn_register);
         mAuth = FirebaseAuth.getInstance();
         textView = findViewById(R.id.login_now);
+        progressBar = findViewById(R.id.ProgressBar);
 
         textView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -79,15 +82,20 @@ public class register_activity extends AppCompatActivity {
                     Toast.makeText(register_activity.this,"Please enter the Password",Toast.LENGTH_SHORT).show();
                     return;
                 }
-
+                progressBar.setVisibility(View.VISIBLE); //Progress Bar setup
                 mAuth.createUserWithEmailAndPassword(email, password)
                         .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                             @Override
                             public void onComplete(@NonNull Task<AuthResult> task) {
+                                progressBar.setVisibility(View.GONE);
                                 if (task.isSuccessful()) {
                                     // Sign in success, update UI with the signed-in user's information
                                     Toast.makeText(register_activity.this, "Account Created Successfully",
                                             Toast.LENGTH_SHORT).show();
+                                    Intent intent = new Intent(getApplicationContext(), Login_activity.class);
+                                    startActivity(intent);
+                                    finish();
+
                                 } else {
                                     // If sign in fails, display a message to the user.
                                     Toast.makeText(register_activity.this, "Authentication failed.",

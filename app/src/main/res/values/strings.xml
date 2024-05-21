@@ -21,4 +21,7 @@
     <string name="home_fragment">HOME Fragment</string>
     <string name="fragment_notification">Fragment Notification</string>
     <string name="fragment_profile">Fragment Profile</string>
+    <string name="stay_informed_stay_connected"><![CDATA[Stay Informed & Stay connected !]]></string>
+    <string name="add_url_to_database">Add URL to Database</string>
+    <string name="add_url_text">Add URL Activity</string>
 </resources>

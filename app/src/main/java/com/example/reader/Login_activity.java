@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -27,7 +28,7 @@ public class Login_activity extends AppCompatActivity {
     Button buttonLogin;
     FirebaseAuth mAuth;
     TextView textView;
-
+    ProgressBar progressBar;
     @Override
     public void onStart() {
         super.onStart();
@@ -50,6 +51,7 @@ public class Login_activity extends AppCompatActivity {
         buttonLogin = findViewById(R.id.btn_login);
         mAuth = FirebaseAuth.getInstance();
         textView = findViewById(R.id.register_now);
+        progressBar = findViewById(R.id.ProgressBar);
 
         textView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -75,11 +77,12 @@ public class Login_activity extends AppCompatActivity {
                     Toast.makeText(Login_activity.this,"Please enter the Password",Toast.LENGTH_SHORT).show();
                     return;
                 }
-
+                progressBar.setVisibility(View.VISIBLE);
                 mAuth.signInWithEmailAndPassword(email, password)
                         .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                             @Override
                             public void onComplete(@NonNull Task<AuthResult> task) {
+                                progressBar.setVisibility(View.GONE);
                                 if (task.isSuccessful()) {
                                     // Sign in success, update UI with the signed-in user's information
                                     Toast.makeText(Login_activity.this, "Logged In.",
