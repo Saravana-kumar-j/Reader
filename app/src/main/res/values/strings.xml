@@ -31,4 +31,8 @@
     <string name="database_connection">DATABASE CONNECTION</string>
     <string name="link_here">Link Here</string>
     <string name="website">Website</string>
+    <string name="url_database">URL Database</string>
+    <string name="url_list">URL List</string>
+    <string name="remove">Remove</string>
+    <string name="website_link">Website Link</string>
 </resources>

@@ -3,15 +3,16 @@ package com.example.reader;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
-import androidx.viewpager.widget.PagerAdapter;
 import androidx.viewpager2.widget.ViewPager2;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -35,22 +36,25 @@ public class MainActivity extends AppCompatActivity {
     ArrayList<Fragment> fragmentArrayList = new ArrayList<>();
     BottomNavigationView bottomNav;
 
+    // For back press handling
+    private boolean doubleBackToExitPressedOnce = false;
+    private final Handler handler = new Handler();
+    private final Runnable resetBackPressFlag = () -> doubleBackToExitPressedOnce = false;
 
     @Override
     protected void onStart() {
         super.onStart();
         auth = FirebaseAuth.getInstance();
         user = auth.getCurrentUser();
-        if(user == null){
+        if (user == null) {
             startActivity(new Intent(this, Welcome_activity.class));
+            finish();
         }
     }
-
 
     @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
@@ -59,7 +63,7 @@ public class MainActivity extends AppCompatActivity {
         textView = findViewById(R.id.user_details);
         user = auth.getCurrentUser();
 
-//        Pager Fragment
+        // Pager Fragment
         pageMain = findViewById(R.id.pagerMain);
         fragmentArrayList.add(new FragmentHome());
         fragmentArrayList.add(new FragmentNotification());
@@ -70,10 +74,9 @@ public class MainActivity extends AppCompatActivity {
 
         pageMain.setAdapter(adapterView);
         pageMain.registerOnPageChangeCallback(new ViewPager2.OnPageChangeCallback() {
-
             @Override
             public void onPageSelected(int position) {
-                switch (position){
+                switch (position) {
                     case 0:
                         bottomNav.setSelectedItemId(R.id.itHome);
                         break;
@@ -84,7 +87,6 @@ public class MainActivity extends AppCompatActivity {
                         bottomNav.setSelectedItemId(R.id.itProfile);
                         break;
                 }
-
                 super.onPageSelected(position);
             }
         });
@@ -93,7 +95,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 int id = item.getItemId();
-                if(id == R.id.itHome){
+                if (id == R.id.itHome) {
                     pageMain.setCurrentItem(0);
                 } else if (id == R.id.itNotification) {
                     pageMain.setCurrentItem(1);
@@ -104,23 +106,44 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-//        if(user == null){
-//            Intent intent = new Intent(getApplicationContext(), Welcome_activity.class);
-//            startActivity(intent);
-//            finish();
-//        } else {
-//            textView.setText(user.getEmail());
-//        }
-//
-//        button.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                FirebaseAuth.getInstance().signOut();
-//                Intent intent = new Intent(getApplicationContext(), Login_activity.class);
-//                startActivity(intent);
-//                finish();
-//            }
-//        });
+        // Uncomment and implement logout functionality if needed
+        /*
+        if (user != null) {
+            textView.setText(user.getEmail());
+        }
 
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                FirebaseAuth.getInstance().signOut();
+                Intent intent = new Intent(getApplicationContext(), Login_activity.class);
+                startActivity(intent);
+                finish();
+            }
+        });
+        */
     }
+
+   
+    @Override
+    public void onBackPressed() {
+        if (pageMain.getCurrentItem() == 0) { // Check if we are on the Home Fragment
+            if (doubleBackToExitPressedOnce) {
+                exitApplication();
+                return;
+            }
+
+            this.doubleBackToExitPressedOnce = true;
+            Toast.makeText(this, "Press back again to exit", Toast.LENGTH_SHORT).show();
+
+            handler.postDelayed(resetBackPressFlag, 2000); // Reset the flag after 2 seconds
+        } else {
+            super.onBackPressed();
+        }
+    }
+
+    private void exitApplication() {
+        finishAffinity();
+    }
+
 }

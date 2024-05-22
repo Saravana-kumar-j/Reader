@@ -5,7 +5,8 @@
     android:layout_height="match_parent"
     android:background="@color/splash_color"
     tools:context="fragment.FragmentHome"
-    android:gravity="center">
+    android:gravity="center"
+    android:id="@+id/homeFragmentContainer">
 
     <!-- TODO: Update blank fragment layout -->
     <ListView
