@@ -1,16 +1,16 @@
 package adapter;
 
 public class ListItem {
-    private int imageResource;
+    private int imageResId;
     private String text;
 
-    public ListItem(int imageResource, String text) {
-        this.imageResource = imageResource;
+    public ListItem(int imageResId, String text) {
+        this.imageResId = imageResId;
         this.text = text;
     }
 
-    public int getImageResource() {
-        return imageResource;
+    public int getImageResId() {
+        return imageResId;
     }
 
     public String getText() {

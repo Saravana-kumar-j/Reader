@@ -4,41 +4,50 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
+import android.widget.BaseAdapter;
 import android.widget.TextView;
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
+import com.example.reader.R;
 import com.google.android.material.imageview.ShapeableImageView;
 import java.util.List;
-import com.example.reader.R;
 
-import adapter.ListItem;
+public class ListAdapter extends BaseAdapter {
 
-public class ListAdapter extends ArrayAdapter<ListItem> {
+    private Context context;
+    private List<ListItem> listItems;
 
-    public Context context;
-    public List<ListItem> items;
-
-    public ListAdapter(Context context, List<ListItem> items) {
-        super(context, 0, items);
+    public ListAdapter(Context context, List<ListItem> listItems) {
         this.context = context;
-        this.items = items;
+        this.listItems = listItems;
     }
 
-    @NonNull
     @Override
-    public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
+    public int getCount() {
+        return listItems.size();
+    }
+
+    @Override
+    public Object getItem(int position) {
+        return listItems.get(position);
+    }
+
+    @Override
+    public long getItemId(int position) {
+        return position;
+    }
+
+    @Override
+    public View getView(int position, View convertView, ViewGroup parent) {
         if (convertView == null) {
             convertView = LayoutInflater.from(context).inflate(R.layout.home_list_item, parent, false);
         }
 
-        ListItem currentItem = items.get(position);
-
         ShapeableImageView imageView = convertView.findViewById(R.id.listImage);
         TextView textView = convertView.findViewById(R.id.listName);
 
-        imageView.setImageResource(currentItem.getImageResource());
-        textView.setText(currentItem.getText());
+        ListItem item = listItems.get(position);
+
+        imageView.setImageResource(item.getImageResId());
+        textView.setText(item.getText());
 
         return convertView;
     }

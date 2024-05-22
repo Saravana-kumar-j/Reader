@@ -24,4 +24,11 @@
     <string name="stay_informed_stay_connected"><![CDATA[Stay Informed & Stay connected !]]></string>
     <string name="add_url_to_database">Add URL to Database</string>
     <string name="add_url_text">Add URL Activity</string>
+    <string name="paste_the_link_here">Paste The Link Here</string>
+    <string name="add_link_to_the_database">Add link to the Database</string>
+    <string name="website_name">Website Name</string>
+    <string name="add_url">Add URL</string>
+    <string name="database_connection">DATABASE CONNECTION</string>
+    <string name="link_here">Link Here</string>
+    <string name="website">Website</string>
 </resources>
