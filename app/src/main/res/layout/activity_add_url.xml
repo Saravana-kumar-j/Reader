@@ -3,6 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
+    android:layout_margin="20dp"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".Add_url">
@@ -35,7 +36,7 @@
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/textInputLayout"
-        android:layout_width="409dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="256dp"
         android:gravity="center"
@@ -47,13 +48,13 @@
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/website_link"
-            android:layout_width="356dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/link_here" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
-        android:layout_width="409dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="20dp"
         android:gravity="center"
@@ -63,15 +64,18 @@
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/website_name"
-            android:layout_width="356dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/website" />
     </com.google.android.material.textfield.TextInputLayout>
 
-    <Button
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        app:backgroundTint="@color/button_color"
+        app:cornerRadius="8dp"
+        android:textColor="@color/black"
         android:text="@string/add_url"
         app:layout_constraintBottom_toTopOf="@+id/textView2"
         app:layout_constraintEnd_toEndOf="parent"
@@ -80,10 +84,13 @@
         app:layout_constraintTop_toBottomOf="@+id/textInputLayout"
         app:layout_constraintVertical_bias="0.163" />
 
-    <Button
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/view_urls_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        app:backgroundTint="@color/button_color"
+        app:cornerRadius="8dp"
+        android:textColor="@color/black"
         android:text="@string/url_list"
         app:layout_constraintBottom_toTopOf="@+id/textView2"
         app:layout_constraintEnd_toEndOf="parent"

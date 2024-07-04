@@ -11,6 +11,7 @@ constraintlayout = "2.1.4"
 googleServices = "4.4.1"
 firebaseFirestore = "24.11.1"
 firebaseAuth = "22.3.1"
+googleGmsGoogleServices = "4.4.1"
 
 [libraries]
 android-gif-drawable = { module = "pl.droidsonroids.gif:android-gif-drawable", version.ref = "androidGifDrawable" }
@@ -27,4 +28,5 @@ firebase-auth = { group = "com.google.firebase", name = "firebase-auth", version
 
 [plugins]
 androidApplication = { id = "com.android.application", version.ref = "agp" }
+googleGmsGoogleServices = { id = "com.google.gms.google-services", version.ref = "googleGmsGoogleServices" }
 

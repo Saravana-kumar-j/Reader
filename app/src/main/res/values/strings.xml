@@ -35,4 +35,9 @@
     <string name="url_list">URL List</string>
     <string name="remove">Remove</string>
     <string name="website_link">Website Link</string>
+    <string name="website_name_text">Website Name</string>
+    <string name="welcome_to_reader_s_world">Welcome to Reader\'s World!</string>
+    <string name="terms_and_conditions_are_applied">Terms and Conditions are applied.</string>
+    <string name="user_name">User Name</string>
+    <string name="name_profile">Name:</string>
 </resources>

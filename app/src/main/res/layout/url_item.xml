@@ -2,6 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="horizontal"
     android:padding="16dp">
 
@@ -15,7 +16,7 @@
             android:id="@+id/websiteNameTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Website Name"
+            android:text="@string/website_name_text"
             android:textSize="18sp"
             android:textStyle="bold" />
 
@@ -28,9 +29,17 @@
             android:textColor="@android:color/darker_gray" />
     </LinearLayout>
 
-    <Button
+<!--    <Button-->
+<!--        -->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!-- />-->
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/deleteButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:backgroundTint="@color/button_color"
+        android:textColor="@color/black"
+        app:cornerRadius="8dp"
         android:text="@string/remove" />
 </LinearLayout>
